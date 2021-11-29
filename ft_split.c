@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jboumal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/23 19:06:22 by jboumal           #+#    #+#             */
-/*   Updated: 2021/11/28 11:05:09 by jboumal          ###   ########.fr       */
+/*   Created: 2021/11/27 13:57:39 by jboumal           #+#    #+#             */
+/*   Updated: 2021/11/28 21:40:32 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdlib.h>
-#include <stdio.h>
+
+#include "header.h"
 
 int	is_separator(char *c, char *charset)
 {
@@ -57,27 +57,43 @@ int	n_words(char *str, char *charset)
 	return (n);
 }
 
-char	**ft_split(char *str, char *charset)
+char	**ft_split2(char *str, char *charset, int n, char *s)
 {
-	int		n;
 	char	**split;
-	char	*s;
 	char	**tsplit;
 
-	n = n_words(str, charset);
 	split = malloc((n + 1) * sizeof(char *));
+	if (!split)
+		return (0);
 	tsplit = split;
 	while (--n >= 0)
 	{
 		while (is_separator (str, charset))
 			str++;
 		*tsplit = malloc(sizeof(char) * (n_str(str, charset) + 1));
+		if (!*tsplit)
+			return (0);
 		s = *tsplit;
 		while (n_str(str, charset))
 			*s++ = *str++;
 		*s = '\0';
 		tsplit++;
 	}
+	*tsplit = malloc(sizeof(char));
+	if (!*tsplit)
+		return (0);
 	*tsplit = 0;
+	return (split);
+}
+
+char	**ft_split(char *str, char *charset)
+{
+	int		n;
+	char	*s;
+	char	**split;
+
+	s = 0;
+	n = n_words(str, charset);
+	split = ft_split2(str, charset, n, s);
 	return (split);
 }
