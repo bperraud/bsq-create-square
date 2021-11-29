@@ -37,8 +37,9 @@ void print_map(t_map map);
 int index_to_col(t_map map, int index);
 int is_index_in_map(t_map map, int index, int size);
 
+
 //find_square
-void find_biggest_square(t_map map);
+void find_biggest_square(t_map *map);
 int try_nsquare(t_map map, int index, int size);
 
 #endif

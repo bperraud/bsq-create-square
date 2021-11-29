@@ -66,7 +66,7 @@ int is_no_symbol_line(t_map map, int index, int nb)
  */
 int is_index_in_map(t_map map, int index, int size)
 {
-    if ( map.points[index].y + size > map.line - 1)
+    if (map.points[index].y + size > map.line - 1)
     {
         printf("depasse la map\n");
         return (0);
