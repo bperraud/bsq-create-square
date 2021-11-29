@@ -7,17 +7,17 @@ int main() {
     map.best_square.size = 0;
     map.col = 4;
     map.line = 4;
+    map.symbols[0] = '.';
 
     map.points = malloc( 16 * sizeof(t_point));
     int i = 0;
 
     printf("start\n");
-
     while (i < 4)
     {
-        t_point point;
         int j = 0;
         while (j < 4) {
+            t_point point;
             point.x = i;
             point.y = j;
             point.symbol = 0;
@@ -26,6 +26,7 @@ int main() {
         }
         i++;
     }
+    print_map(map);
 
     find_biggest_square(map);
     printf("(x, y) : (%d, %d)\n", map.best_square.start_point.x, map.best_square.start_point.x);

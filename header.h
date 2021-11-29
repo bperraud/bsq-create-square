@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 typedef struct s_point
 {
@@ -30,6 +31,7 @@ typedef struct s_map
 //map function
 int is_empty_line(t_map map, int index, int nb);
 int is_empty_lines(t_map map, int index, int lines);
+void print_map(t_map map);
 
 //find_square
 void find_biggest_square(t_map map);
