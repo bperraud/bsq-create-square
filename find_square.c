@@ -1,63 +1,44 @@
-#include <stdbool.h>
 #include "header.h"
 
-
-t_point* find_biggest_square(t_map map)
-{
-    t_point point;
-
-
-}
-
-
-/*
- * return 1 if there are "lines" empty lines from start point
- */
-int is_empty_lines(t_map map, t_point start_point, int lines)
+void find_biggest_square(t_map map)
 {
     int i;
+    int size;
 
     i = 0;
-    while (i < lines)
+    size = 1;
+    while (i < map.line * map.col && size <= MIN(map.line, map.col))
     {
-        if (!is_empty_line(map, start_point, lines))
-            return (0);
-        else
-            i++;
-    }
-    return (1);
-}
-
-/*
- * return 1 if the line of start_point is empty for size char
- */
-int is_empty_line(t_map map, t_point point, int nb_symbol)
-{
-    int i;
-
-    i = 0;
-    while (i < nb_symbol)
-    {
-
-    }
-
-}
-
-
-/*
- * try to create a square of size 1 at start_point
- */
-int try_nsquare(t_map map, t_point start_point, int n)
-{
-    int i;
-
-    i = 0;
-    while( i < n)
-    {
-        if (is_empty_lines(map, start_point, n))
-
+        if (try_nsquare(map, i, size))
+        {
+            map.best_square.size = size;
+            map.best_square.start_point = map.points[i];
+            size++;
+            i = 0;
+        }
         i++;
     }
+}
+
+
+/*
+ * try to create a square of size n at point index
+ * return 1 if it is possible, else 0
+ */
+int try_nsquare(t_map map, int index, int size)
+{
+    int i;
+
+    if (map.points[index].x + size > map.line)
+        return (0);
+    i = 0;
+    while (i < size)
+    {
+        if (is_empty_lines(map, index, size))
+            return (1);
+        i++;
+    }
+    return (0);
 }
 
 /*
@@ -75,13 +56,3 @@ t_point get_point(t_map map, int x, int y)
     }
     return map.points[0];
 }
-
-/*
- * get index in tab of points of map of the point in parameter
- */
-int get_point_index(t_map map, t_point to_find_point)
-{
-    return -1;
-}
-
-
