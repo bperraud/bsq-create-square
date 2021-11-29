@@ -29,12 +29,13 @@ int try_nsquare(t_map map, int index, int size)
 {
     int i;
 
+    // size trop grande
     if (map.points[index].x + size > map.line)
         return (0);
     i = 0;
     while (i < size)
     {
-        if (is_empty_lines(map, index, size))
+        if (is_empty_lines(map, index, size - 1))
             return (1);
         i++;
     }

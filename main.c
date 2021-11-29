@@ -5,9 +5,14 @@ int main() {
     t_map map;
 
     map.best_square.size = 0;
+    map.best_square.start_point.x = -1;
+    map.best_square.start_point.y = -1;
+    map.nb_points = 16;
     map.col = 4;
     map.line = 4;
     map.symbols[0] = '.';
+    map.symbols[1] = 'x';
+    map.symbols[2] = 'o';
 
     map.points = malloc( 16 * sizeof(t_point));
     int i = 0;
@@ -26,12 +31,18 @@ int main() {
         }
         i++;
     }
+
+    map.points[2].symbol = 2;
+    map.points[9].symbol = 2;
+
     print_map(map);
 
-    find_biggest_square(map);
+    printf("empty line %d\n", is_no_symbol_line(map, 1, 2));
+    printf("empty lines %d\n", is_empty_lines(map, 1, 2));
+
+    //find_biggest_square(map);
     printf("(x, y) : (%d, %d)\n", map.best_square.start_point.x, map.best_square.start_point.x);
     printf("%d\n", map.best_square.size);
-
 
     free(map.points);
     printf("end\n");

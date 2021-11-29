@@ -4,7 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
+
 typedef struct s_point
 {
     int	x;
@@ -29,9 +31,11 @@ typedef struct s_map
 } t_map;
 
 //map function
-int is_empty_line(t_map map, int index, int nb);
+int is_no_symbol_line(t_map map, int index, int nb);
 int is_empty_lines(t_map map, int index, int lines);
 void print_map(t_map map);
+int index_to_col(t_map map, int index);
+int is_index_in_map(t_map map, int index, int size);
 
 //find_square
 void find_biggest_square(t_map map);
