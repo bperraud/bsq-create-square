@@ -37,8 +37,10 @@ int main() {
 
     print_map(map);
 
-    printf("empty line %d\n", is_no_symbol_line(map, 1, 2));
-    printf("empty lines %d\n", is_empty_lines(map, 1, 2));
+    //is_index_in_map(map, 6, 2);
+
+    printf("no symbol line %d\n", is_no_symbol_line(map, 0, 2));
+    printf("empty lines %d\n", is_empty_lines(map, 6, 2));
 
     //find_biggest_square(map);
     printf("(x, y) : (%d, %d)\n", map.best_square.start_point.x, map.best_square.start_point.x);

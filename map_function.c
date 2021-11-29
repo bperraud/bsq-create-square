@@ -25,19 +25,20 @@ void print_map(t_map map)
 int is_empty_lines(t_map map, int index, int lines)
 {
     int i;
-    if (!is_index_in_map(map, index, lines) || map.points[index].symbol == 2)
-    {
-        printf("pas possible\n");
-        return (0);
-    }
 
+//    if (!is_index_in_map(map, index, lines) || map.points[index].symbol == 2)
+//    {
+//        printf("c'est trop grand pas possible\n");
+//        return (0);
+//    }
     i = 0;
     while (i < lines)
     {
-        //printf("i  : %d\n", i);
-        //printf("bool : %d\n", is_empty_line(map, index, i));
-        if (!is_no_symbol_line(map, index, lines))
+        if (!is_no_symbol_line(map, index, lines) || !is_index_in_map(map, index, lines) || map.points[index].symbol == 2)
+        {
+            printf("pas possible\n");
             return (0);
+        }
         else
         {
             i++;
@@ -48,7 +49,7 @@ int is_empty_lines(t_map map, int index, int lines)
 }
 
 /*
- * return 1 if the line starting at index is empty for size symbol to the right
+ * return 1 if the line starting at index is empty for nb symbol to the right, else 0
  * only check for obstacle
  */
 int is_no_symbol_line(t_map map, int index, int nb)
@@ -56,7 +57,7 @@ int is_no_symbol_line(t_map map, int index, int nb)
     int max ;
 
     max = index + nb;
-    while (index < max)
+    while (index <= max)
     {
         if (map.points[index].symbol == 2)
             return (0);
@@ -73,16 +74,18 @@ int is_index_in_map(t_map map, int index, int size)
     int line;
     int col;
 
-    //printf("x, y  (%d, %d)\n", line, col);
-
     if (index < map.col)
         col = index;
     else
         col = index % map.col;
     line = index / map.col;
-
-    if (line + size > map.col || col + size > map.line)
+    //printf("x, y  (%d, %d)\n", line, col);
+    if (line + size > map.col - 1 || col + size > map.line - 1)
+    {
+        //printf("trop grand");
         return (0);
+    }
+
     return (1);
 }
 
