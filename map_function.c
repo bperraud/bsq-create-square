@@ -72,10 +72,15 @@ int is_no_symbol_line(t_map map, int index, int nb)
 int is_index_in_map(t_map map, int index, int size)
 {
     int line;
+    int col;
 
-    line = index / map.col;
-    printf("x %d\n", line);
-    if (line + size > map.col)
+    if (index < map.col)
+        col = index;
+    else
+        col = index % map.col;
+    //line = index / map.col;
+    //printf("x, y  (%d, %d)\n", line, col);
+    if ( col + size > map.line - 1)
     {
         printf("depasse la map\n");
         return (0);
