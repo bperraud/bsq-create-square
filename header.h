@@ -15,6 +15,7 @@ typedef struct s_map
     t_point *points;
     int width;
     int lenght;
+    int nb_points;
     char symbols[3];   // 3 indices
 } t_map;
 
