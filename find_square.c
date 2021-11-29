@@ -11,7 +11,6 @@ void find_biggest_square(t_map *map)
     {
         if (try_nsquare(*map, i, square_size) && square_size > map->best_square.size)
         {
-            printf("square_size : %d\n", square_size);
             map->best_square.size = square_size;
             map->best_square.start_point = map->points[i];
             square_size++;
@@ -29,17 +28,18 @@ int try_nsquare(t_map map, int index, int square_size)
 {
     int i;
 
-    // size trop grande
-    if (map.points[index].x + square_size > map.line)
-        return (0);
     i = 0;
-    while (i < square_size)
+    while (i <= square_size - 1)
     {
-        if (is_empty_lines(map, index, square_size - 1))
-            return (1);
-        i++;
+        if (!is_no_symbol_line(map, index, square_size - 1) || !is_index_in_map(map, index, square_size - 1) || map.points[index].symbol == 2 || index >= map.nb_points)
+            return (0);
+        else
+        {
+            i++;
+            index += map.line;
+        }
     }
-    return (0);
+    return (1);
 }
 
 /*

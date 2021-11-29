@@ -32,9 +32,8 @@ typedef struct s_map
 
 //map function
 int is_no_symbol_line(t_map map, int index, int nb);
-int is_empty_lines(t_map map, int index, int lines);
+//int is_empty_lines(t_map map, int index, int lines);
 void print_map(t_map map);
-int index_to_col(t_map map, int index);
 int is_index_in_map(t_map map, int index, int size);
 
 

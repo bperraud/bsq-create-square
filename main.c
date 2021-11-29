@@ -13,11 +13,9 @@ int main() {
     map.symbols[0] = '.';
     map.symbols[1] = 'x';
     map.symbols[2] = 'o';
-
     map.points = malloc( 16 * sizeof(t_point));
-    int i = 0;
 
-    printf("start\n");
+    int i = 0;
     while (i < 4)
     {
         int j = 0;
@@ -26,27 +24,26 @@ int main() {
             point.x = i;
             point.y = j;
             point.symbol = 0;
-            map.points[j] = point;
+            map.points[i * map.line + j] = point;
             j++;
         }
         i++;
     }
-
     map.points[2].symbol = 2;
     map.points[9].symbol = 2;
-
     print_map(map);
 
-    is_index_in_map(map, 14, 1);
     printf("no symbol line %d\n", is_no_symbol_line(map, 13, 1));
-    printf("empty lines %d\n", is_empty_lines(map, 0, 1));
+    printf(" is_index_in_map %d\n", is_index_in_map(map, 6, 2));
+    //printf("empty lines %d\n", is_empty_lines(map, 6, 2));
 
     find_biggest_square(&map);
 
-    //printf("try square :  %d\n", try_nsquare(map, 0, 1));
+    //printf("try square :  %d\n", try_nsquare(map, 0, 2));
 
     printf("(x, y) : (%d, %d)\n", map.best_square.start_point.x, map.best_square.start_point.x);
     printf("%d\n", map.best_square.size);
+
 
     free(map.points);
     printf("end\n");
