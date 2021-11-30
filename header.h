@@ -38,10 +38,10 @@ void print_map(t_map map);
 void write_bsq(t_map map);
 void write_line(t_map map, int index);
 int is_no_symbol_line(t_map map, int index, int nb);
-
+int is_index_in_map(t_map map, int index, int size);
 
 //find_square
-void find_biggest_square(t_map map);
+void find_bsq(t_map *map);
 int try_nsquare(t_map map, int index, int size);
 
 //string operations
@@ -62,11 +62,13 @@ int	check_map(char **split);
 //create map file
 void standard_input_map();
 void create_map_file();
-void standard_input_map();
 
 //check map
 int	check_first_line(char *line);
 int	check_map_core(char **split, int n, char *charset);
 int	put_error(void);
+
+//main
+void bsq(t_map *map, char *path);
 
 #endif

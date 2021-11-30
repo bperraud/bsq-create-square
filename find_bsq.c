@@ -11,11 +11,11 @@ void find_bsq(t_map *map)
     {
         if (try_nsquare(*map, i, square_size) && square_size > map->bsq.size)
         {
-            printf("index : %d, meilleur solution : %d \n", i, square_size);
-            printf("x : %d, y : %d \n", map->points[i].x, map->points[i].y);
+//            printf("index : %d, meilleur solution : %d \n", i, square_size);
+//            printf("x : %d, y : %d \n", map->points[i].x, map->points[i].y);
             map->bsq.size = square_size;
-            map->bsq.start_point->x = map->points[i].x;
-            map->bsq.start_point->y = map->points[i].y;
+            map->bsq.start_point.x = map->points[i].x;
+            map->bsq.start_point.y = map->points[i].y;
             map->bsq.index = i;
             square_size++;
             i = 0;
