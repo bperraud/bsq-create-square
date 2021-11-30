@@ -9,8 +9,6 @@ void bsq(t_map *map, char *path)
         printf("soucis parsing");
         exit(EXIT_SUCCESS);
     }
-    else
-        printf("c'est bon");
 
     map->bsq.size = 0;
     map->bsq.start_point.x = -1;
