@@ -12,7 +12,7 @@ int	check_map_core(char **split, int n, char *charset)
 	int	j;
 	int	len;
 	
-	if (n < 0 || n != (list_len(split) - 1))
+	if (n != (list_len(split) - 1))
 		return (0);	
 	i = 0;
 	len = ft_strlen(split[1]);
@@ -62,6 +62,8 @@ int	check_map(char **split)
 
 	if (!split)
 		return (0);
+	if (list_len(split) < 2)
+		return (put_error());
 	n = check_first_line(split[0]);
 	if (!n)
 		return (put_error());
