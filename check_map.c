@@ -12,7 +12,7 @@ int	check_map_core(char **split, int n, char *charset)
 	int	j;
 	int	len;
 	
-	if (n != (list_len(split) - 1))
+	if (n < 0 || n != (list_len(split) - 1))
 		return (0);	
 	i = 0;
 	len = ft_strlen(split[1]);
