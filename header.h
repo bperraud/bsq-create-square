@@ -16,7 +16,7 @@ typedef struct s_point
 
 typedef struct s_square
 {
-    t_point start_point;
+    t_point *start_point;
     int size;
 } t_square;
 
