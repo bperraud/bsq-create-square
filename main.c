@@ -30,11 +30,16 @@ int main() {
 
     t_map	*map;
     map = malloc(sizeof(map));
-    if (!parse("map.txt", map))
-        return (0);
 
-    free(map->points);
-    free(map);
+    if (!parse("map.txt", map))
+    {
+        printf("la");
+        return (0);
+    }
+    else
+        printf("ici");
+
+    printf("la");
 
     print_map(*map);
     find_bsq(map);
@@ -42,7 +47,9 @@ int main() {
     write_bsq(*map);
     print_map(*map);
 
-    //free(map.points);
+    free(map->points);
+    free(map);
+
     printf("end\n");
     return 0;
 }
