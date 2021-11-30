@@ -1,44 +1,48 @@
 #include "header.h"
 
-void find_biggest_square(t_map map)
+void find_biggest_square(t_map *map)
 {
     int i;
-    int size;
+    int square_size;
 
-    i = 0;
-    size = 1;
-    while (i < map.line * map.col && size <= MIN(map.line, map.col))
+    i = -1;
+    square_size = 1;
+    while (i < map->nb_points && square_size <= MIN(map->line, map->col))
     {
-        if (try_nsquare(map, i, size))
+        i++;
+        if (try_nsquare(*map, i, square_size) && square_size > map->best_square.size)
         {
-            map.best_square.size = size;
-            map.best_square.start_point = map.points[i];
-            size++;
+//            printf("index : %d, meilleur solution : %d, \n", i, square_size);
+//            printf("x : %d, y : %d, \n", map->points[i].x, map->points[i].y);
+            map->best_square.size = square_size;
+            map->best_square.start_point->x = map->points[i].x;
+            map->best_square.start_point->y = map->points[i].y;
+            square_size++;
             i = 0;
         }
-        i++;
     }
 }
-
 
 /*
  * try to create a square of size n at point index
  * return 1 if it is possible, else 0
  */
-int try_nsquare(t_map map, int index, int size)
+int try_nsquare(t_map map, int index, int square_size)
 {
     int i;
 
-    if (map.points[index].x + size > map.line)
-        return (0);
     i = 0;
-    while (i < size)
+    while (i <= square_size - 1)
     {
-        if (is_empty_lines(map, index, size))
-            return (1);
-        i++;
+        if (!is_no_symbol_line(map, index, square_size - 1) || !is_index_in_map(map, index, square_size - 1) || map.points[index].symbol == 2 || index >= map.nb_points)
+            return (0);
+        else
+        {
+            i++;
+            index += map.line;
+        }
     }
-    return (0);
+    return (1);
 }
 
 /*
