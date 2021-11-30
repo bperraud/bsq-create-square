@@ -62,6 +62,8 @@ int	check_map(char **split)
 
 	if (!split)
 		return (0);
+	if (list_len(split) < 2)
+		return (put_error());
 	n = check_first_line(split[0]);
 	if (!n)
 		return (put_error());
