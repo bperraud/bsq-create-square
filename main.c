@@ -24,8 +24,8 @@ void bsq(t_map *map, char *path)
     free(map);
 }
 
-int main(int argc, char **argv) {
-
+int main(int argc, char **argv)
+{
     char *path;
     t_map *map;
 
