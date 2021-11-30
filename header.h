@@ -61,7 +61,7 @@ int	check_map(char **split);
 
 //create map file
 void standard_input_map(int isfirst);
-void create_map_file(int nb_line, char *line);
+void create_map_file(int nb_line);
 
 //check map
 int	check_first_line(char *line);

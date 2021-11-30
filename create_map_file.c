@@ -1,6 +1,6 @@
 #include "header.h"
 
-void create_map_file(int nb_line, char *line)
+void create_map_file(int nb_line)
 {
     char buf[BUF];
     char tmpname[] = "new_map.txt" ;
@@ -8,8 +8,6 @@ void create_map_file(int nb_line, char *line)
     int str_len;
     int i;
 
-    //ft_putstr("Write number of line followed by the caracters : (quit() to exit, end when finish)\n");
-    //fd = open(tmpname, O_WRONLY | O_APPEND | O_CREAT, 0644);   //0644 (owning) User: read & write * Group: read * Other: read
     i = 0;
     fd = open(tmpname, O_WRONLY | O_CREAT, 0644);   //0644 (owning) User: read & write * Group: read * Other: read
     while(i < nb_line)
@@ -30,29 +28,25 @@ void create_map_file(int nb_line, char *line)
 void standard_input_map(int isfirst)
 {
     if (isfirst)
-        ft_putstr("Write number of line followed by the caracters : (quit() to exit)\n");
+        ft_putstr("Write number of line followed by the characters : (quit() to exit)\n");
     char buffer[50];
-    int nb_line;
     char *line;
-    read(STDIN_FILENO, buffer, 50);         //lit l'entrée standard
-    buffer[ft_strlen_input(buffer)] = '\0';
 
-    ft_putstr(buffer);
-
+    read(STDIN_FILENO, buffer, 50);
+    buffer[ft_strlen_input(buffer) - 1] = '\0';
     if(!ft_strncmp(buffer, "quit()\n", 6))
         exit(EXIT_SUCCESS);
-    nb_line = check_first_line(buffer);
     line = ft_strdup(buffer);
     if (!line){
         exit(EXIT_SUCCESS);
     }
-    if (!nb_line)
+    if (!check_first_line(buffer))
     {
         ft_putstr("Wrong input\n");
         standard_input_map(0);
     }
     else
-        create_map_file(nb_line, line);
+        create_map_file(ft_atoi(buffer));
 }
 
 //void create_map_file(int nb_line, char *line)
