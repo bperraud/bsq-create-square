@@ -11,11 +11,53 @@
 /* ************************************************************************** */
 #include "header.h"
 
-int	put_data(t_map *map, char **split)
+int	symbol_to_n(char c, t_map *map)
 {
 	int	i;
-	int	size;
-	
+
+	i = 0;
+	while (i < 3)
+	{
+		if (map->symbols[i] == c)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+int	put_points(t_map *map, char **split)
+{
+	int		i;
+	int		j;
+	t_point	point;
+
+	map->points = malloc(sizeof(point) * map->nb_points);
+	if (!map->points)
+		return (0);
+	i = 0;
+	while (split[++i])
+	{
+		j = -1;
+		while (split[i][++j])
+		{
+			point.x = j;
+			point.y = i - 1;
+			point.symbol = symbol_to_n(split[i][j], map);
+			map->points[(j + 1) * i - 1] = point;
+		}
+	}
+	return (1);
+}
+
+int	str_to_map(char *str, t_map *map)
+{
+	char	**split;
+	int		i;
+	int		size;
+
+	split = ft_split(str, "\n");
+	if (!split)
+		return (0);
 	size = ft_strlen(split[0]);
 	map->symbols[0] = split[0][size - 3];
 	map->symbols[1] = split[0][size - 2];
@@ -23,28 +65,15 @@ int	put_data(t_map *map, char **split)
 	split[0][size - 3] = '\0';
 	map->col = atoi(split[0]);
 	i = 0;
-	while(split[i])
-	{
-		
+	while (split[i])
 		i++;
-	}
-}
-
-int	str_to_map(char *str, t_map *map)
-{
-	char	**split;
-	int		i;
-
-	split = ft_split(str, "\n");
-	if (!split)
+	map->line = i - 1;
+	map->nb_points = map->line * map-> col;
+	if (!put_points(map, split))
 		return (0);
-	i = 0;
-	printf("%s\n", split[i]);
+	i = -1;
 	while (split[++i])
-	{
-		printf("%s\n", split[i]);
-	}
-	map->line = i;
+		free(split[i]);
 	free (split);
 	return (1);
 }

@@ -79,9 +79,6 @@ char	**ft_split2(char *str, char *charset, int n, char *s)
 		*s = '\0';
 		tsplit++;
 	}
-	*tsplit = malloc(sizeof(char));
-	if (!*tsplit)
-		return (0);
 	*tsplit = 0;
 	return (split);
 }
