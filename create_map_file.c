@@ -1,6 +1,6 @@
 #include "header.h"
 
-void create_map_file(int nb_line)
+void create_map_file(int nb_line, char *line)
 {
     char buf[BUF];
     char tmpname[] = "new_map.txt" ;
@@ -10,6 +10,8 @@ void create_map_file(int nb_line)
 
     i = 0;
     fd = open(tmpname, O_WRONLY | O_CREAT, 0644);   //0644 (owning) User: read & write * Group: read * Other: read
+    write(fd, line, ft_strlen(line));
+    write(fd, "\n", 1);
     while(i < nb_line)
     {
         read(STDIN_FILENO, buf, sizeof(buf));
@@ -46,7 +48,7 @@ void standard_input_map(int isfirst)
         standard_input_map(0);
     }
     else
-        create_map_file(ft_atoi(buffer));
+        create_map_file(ft_atoi(buffer), line);
 }
 
 //void create_map_file(int nb_line, char *line)
