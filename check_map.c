@@ -23,8 +23,8 @@ int	check_map_core(char **split, int n, char *charset)
 			return (0);
 		while (split[i][++j])
 		{
-			if (split[i][j] != charset[0] || split[i][j] != charset[1])
-				return (1);
+			if (split[i][j] != charset[0] && split[i][j] != charset[1])
+				return (0);
 		}
 	}
 	return (1);
