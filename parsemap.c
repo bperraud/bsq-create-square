@@ -43,7 +43,7 @@ int	put_points(t_map *map, char **split)
 			point.x = j;
 			point.y = i - 1;
 			point.symbol = symbol_to_n(split[i][j], map);
-			map->points[(j + 1) * i - 1] = point;
+			map->points[(i - 1) * map->col + j] = point;
 		}
 	}
 	return (1);
@@ -56,7 +56,7 @@ int	str_to_map(char *str, t_map *map)
 	int		size;
 
 	split = ft_split(str, "\n");
-	if (!split)
+	if (!check_map(split))
 		return (0);
 	size = ft_strlen(split[0]);
 	map->symbols[0] = split[0][size - 3];
