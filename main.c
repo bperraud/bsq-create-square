@@ -17,6 +17,15 @@ void bsq(t_map *map, char *path)
 
     print_map(*map);
 
+    printf("\n");
+
+//    printf("try 0, 1 %d\n", try_nsquare(*map, 0, 1));
+//    printf("try 0 ,2 %d\n", try_nsquare(*map, 0, 2));
+//
+//    printf(" is_no_symbol_line : %d\n", is_no_symbol_line(*map, 0, 1));
+//    printf(" is_no_symbol_line : %d\n", is_no_symbol_line(*map, 0, 2));
+//    printf(" is_no_symbol_line : %d\n", is_no_symbol_line(*map, 4, 2 - 1));
+
     find_bsq(map);
     write_bsq(*map);
 

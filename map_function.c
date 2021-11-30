@@ -44,7 +44,7 @@ void write_line(t_map map, int index)
     i = 0;
     while (i < map.bsq.size)
     {
-        map.points[index + i].symbol = 1;
+        map.points[index + i].symbol = 2;
         i++;
     }
 }
@@ -58,9 +58,9 @@ int is_no_symbol_line(t_map map, int index, int nb)
     int max ;
 
     max = index + nb;
-    while (index <= max)
+    while (index < max + 1)
     {
-        if (map.points[index].symbol == 2)
+        if (map.points[index].symbol == 1)
             return (0);
         index++;
     }
