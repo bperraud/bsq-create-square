@@ -4,11 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-<<<<<<< HEAD
 #include <fcntl.h>
-=======
 
->>>>>>> 21f4c482f9848a2636252ecfe046f3b01156d37e
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 
 typedef struct s_point

@@ -1,29 +1,31 @@
 #include "header.h"
 
-<<<<<<< HEAD
-int	main()
-{
-	int		i;
-	t_point	point;
+//<<<<<<< HEAD
+//int	main()
+//{
+//	int		i;
+//	t_point	point;
+//
+//	t_map	*map;
+//	map = malloc(sizeof(map));
+//	if (!parse("map.txt", map))
+//		return (0);
+//	printf("line= %d\n", map-> line);
+//	printf("col= %d\n", map-> col);
+//	printf("nb_points= %d\n", map-> nb_points);
+//	printf("symbols= %s\n", map-> symbols);
+//	i = -1;
+//	while (++i < map->nb_points)
+//	{
+//		point = map->points[i];
+//		printf("(%d, %d): %d\n", point.x, point.y, point.symbol);
+//	}
+//	free(map->points);
+//	free(map);
+//}
+//=======
 
-	t_map	*map;
-	map = malloc(sizeof(map));
-	if (!parse("map.txt", map))
-		return (0);
-	printf("line= %d\n", map-> line);
-	printf("col= %d\n", map-> col);
-	printf("nb_points= %d\n", map-> nb_points);
-	printf("symbols= %s\n", map-> symbols);
-	i = -1;
-	while (++i < map->nb_points)
-	{
-		point = map->points[i];
-		printf("(%d, %d): %d\n", point.x, point.y, point.symbol);
-	}
-	free(map->points);
-	free(map);
-}
-=======
+
 int main() {
 
     t_map map;
@@ -54,9 +56,10 @@ int main() {
         i++;
     }
 
-    map.points[2].symbol = 2;
+    map.points[0].symbol = 2;
+    //map.points[2].symbol = 2;
     //map.points[5].symbol = 2;
-    map.points[9].symbol = 2;
+    //map.points[9].symbol = 2;
     map.points[14].symbol = 2;
 
     print_map(map);
@@ -68,6 +71,8 @@ int main() {
     find_biggest_square(&map);
 
     printf("try square(0, 2) :  %d\n", try_nsquare(map, 0, 2));
+
+
     printf("(x, y) : (%d, %d)\n", map.best_square.start_point->x, map.best_square.start_point->y);
     printf("%d\n", map.best_square.size);
 
@@ -75,4 +80,3 @@ int main() {
     printf("end\n");
     return 0;
 }
->>>>>>> 21f4c482f9848a2636252ecfe046f3b01156d37e

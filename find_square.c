@@ -5,21 +5,24 @@ void find_biggest_square(t_map *map)
     int i;
     int square_size;
 
-    i = -1;
+    i = 0;
     square_size = 1;
     while (i < map->nb_points && square_size <= MIN(map->line, map->col))
     {
-        i++;
-        if (try_nsquare(*map, i, square_size) && square_size > map->best_square.size)
+//        printf("i : %d\n", i);
+//        printf("square_size : %d\n", square_size);
+        if (try_nsquare(*map, i, square_size)) // && square_size >= map->best_square.size)
         {
-//            printf("index : %d, meilleur solution : %d, \n", i, square_size);
-//            printf("x : %d, y : %d, \n", map->points[i].x, map->points[i].y);
+            printf("index : %d, meilleur solution : %d \n", i, square_size);
+            printf("x : %d, y : %d \n", map->points[i].x, map->points[i].y);
             map->best_square.size = square_size;
             map->best_square.start_point->x = map->points[i].x;
             map->best_square.start_point->y = map->points[i].y;
             square_size++;
             i = 0;
         }
+        else
+            i++;
     }
 }
 
