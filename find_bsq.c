@@ -34,10 +34,11 @@ int try_nsquare(t_map map, int index, int square_size)
     int i;
 
     i = 0;
-    while (i <= square_size - 1)
+    while (i < square_size)
     {
+        if (!is_no_symbol_line(map, index, square_size) || !is_index_in_map(map, index, square_size - 1)|| index >= map.nb_points)
         //if (!is_no_symbol_line(map, index, square_size - 1) || !is_index_in_map(map, index, square_size - 1) || map.points[index].symbol == 2 || index >= map.nb_points)
-        if (!is_no_symbol_line(map, index, square_size - 1) || !is_index_in_map(map, index, square_size - 1) || index >= map.nb_points)
+        //if (!is_no_symbol_line(map, index, square_size - 1) || !is_index_in_map(map, index, square_size - 1) || index >= map.nb_points)
             return (0);
         else
         {

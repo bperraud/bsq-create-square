@@ -58,7 +58,7 @@ int is_no_symbol_line(t_map map, int index, int nb)
     int max ;
 
     max = index + nb;
-    while (index < max + 1)
+    while (index < max)
     {
         if (map.points[index].symbol == 1)
             return (0);
@@ -72,7 +72,7 @@ int is_no_symbol_line(t_map map, int index, int nb)
  */
 int is_index_in_map(t_map map, int index, int size)
 {
-    if (map.points[index].y + size > map.line - 1)
+    if (map.points[index].x + size >= map.line)
         return (0);
     return (1);
 }
