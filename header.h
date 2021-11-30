@@ -60,8 +60,8 @@ int parse(char *path, t_map *map);
 int	check_map(char **split);
 
 //create map file
-void standard_input_map();
-void create_map_file();
+void standard_input_map(int isfirst);
+void create_map_file(int nb_line, char *line);
 
 //check map
 int	check_first_line(char *line);

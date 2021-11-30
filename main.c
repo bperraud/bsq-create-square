@@ -39,9 +39,12 @@ int main(int argc, char **argv) {
 
     map = malloc(sizeof(*map));
     if (argc == 1) {
-        create_map_file();
+        //create_map_file();
+        standard_input_map(1);
         path = ft_strdup("new_map.txt");
+        printf("new_map.txt\n");
         bsq(map, path);
+        printf("END");
     }
     else
     {
