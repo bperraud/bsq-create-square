@@ -1,50 +1,55 @@
 #include "header.h"
 
-void	ft_putstr(char *str)
+void standard_input_map(int isfirst)
 {
-    int		i;
+    if (isfirst)
+        ft_putstr("Write number of line followed by the caracters : (quit() to exit)\n");
+    char buffer[10];
+    int nb_line;
+    char *line;
+    read(STDIN_FILENO, buffer, 10);         //lit l'entrée standard
+    buffer[9] = '\0';
+    if(!ft_strncmp(buffer, "quit()\n", 6))
+        exit(EXIT_SUCCESS);
 
-    i = 0;
-    while (str[i])
-    {
-        write(1, &str[i], 1);
-        i++;
+    create_map_file(nb_line, line);
+    nb_line = check_first_line(buffer);
+    line = ft_strdup(buffer);
+    if (!line){
+        exit(EXIT_SUCCESS);
     }
+    if (!nb_line)
+    {
+        ft_putstr("Wrong input\n");
+        standard_input_map(0);
+    }
+    else
+        create_map_file(nb_line, line);
 }
 
+//void create_map_file(int nb_line, char *line)
+//{
+//    line[nb_line] = '\0';
+//    nb_line = ft_atoi(line);
+//    free(line);
+//    ft_putstr(line);
 
-void create_file_map()
+void create_map_file()
 {
-    char buffer[10];
-    read(STDIN_FILENO, buffer, 10);         //lit l'entrée standard
+    char buf[BUF];
+    char tmpname[] = "new_map.txt" ;
+    int fd;
+    int str_len;
 
-    buffer[9] = '\0';
-
-//    n = check_first_line(line);
-//    nbr = ft_strdup(line);
-//    if (!nbr)
-//        return (0);
-//    nbr[n] = '\0';
-//    n = ft_atoi(nbr);
-//    free(nbr);
-
-    // commence par lire le nombre de ligne
-
-    ft_putstr(buffer);
-
-
-//    char buf[1];
-//
-//    char tmpname[] = "mymap.txt" ;
-//    int fd;
-//
-//    fd = open(tmpname, O_WRONLY | O_APPEND | O_CREAT, 0644);   //0644 (owning) User: read & write * Group: read * Other: read
-
-//    while(read(STDIN_FILENO, buf, sizeof(buf))>0) {
-//        // read() here read from stdin charachter by character
-//        // the buf[0] contains the character got by read()
-//        write(fd, )
-//    }
-
-
+    ft_putstr("Write number of line followed by the caracters : (quit() to exit)\n");
+    //fd = open(tmpname, O_WRONLY | O_APPEND | O_CREAT, 0644);   //0644 (owning) User: read & write * Group: read * Other: read
+    fd = open(tmpname, O_WRONLY | O_CREAT, 0644);   //0644 (owning) User: read & write * Group: read * Other: read
+    while(read(STDIN_FILENO, buf, 10) > 0)
+    {
+        str_len = ft_strlen_input(buf);
+        if(!ft_strncmp(buf, "quit()\n", 6))
+            exit(EXIT_SUCCESS);
+        write(fd, &buf, str_len);
+    }
+    close(fd);
 }

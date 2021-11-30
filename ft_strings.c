@@ -10,6 +10,32 @@ int	list_len(char **list)
 	return (i);
 }
 
+int ft_strlen_input(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\n')
+	{
+		i++;
+	}
+	return (i+1);
+}
+
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
+{
+	while (n && *s1 && *s2 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+		n--;
+	}
+	if (n)
+		return (*s1 - *s2);
+	else
+		return (0);
+}
+
 char	*ft_strdup(char *src)
 {
 	char	*s;

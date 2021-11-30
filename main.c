@@ -32,9 +32,8 @@ int main(int argc, char **argv) {
 
     if (argc == 1)
     {
-        create_file_map();
+        create_map_file();
     }
-
 
 //    t_map	*map;
 //    map = malloc(sizeof(*map));
