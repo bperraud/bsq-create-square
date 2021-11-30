@@ -26,37 +26,45 @@
 //=======
 
 
-int main() {
 
-    t_map	*map;
-    map = malloc(sizeof(map));
 
-    if (!parse("map.txt", map))
+int main(int argc, char **argv) {
+
+    if (argc == 1)
     {
-        printf("soucis parsing");
-        return (0);
+        create_file_map();
     }
-    else
-        printf("ici");
 
-    printf("la");
 
-    map->bsq.size = 0;
+//    t_map	*map;
+//    map = malloc(sizeof(*map));
+//
+//    if (!parse("map.txt", map))
+//    {
+//        printf("soucis parsing");
+//        return (0);
+//    }
+//    else
+//        printf("ici");
+//
+//    map->bsq.size = 0;
 
-    //map->bsq.start_point->x = -1;
+//    map->bsq.start_point->x = -1;
 //    map->bsq.start_point->y = -1;
-    map->bsq.index = -1;
-
-    print_map(*map);
+//
+//    map->bsq.index = -1;
+//
+//    print_map(*map);
 
 //    find_bsq(map);
 //
 //    write_bsq(*map);
 //    print_map(*map);
-
-    free(map->points);
-    free(map);
+//
+//    free(map->points);
+//    free(map);
 
     printf("end\n");
     return 0;
 }
+

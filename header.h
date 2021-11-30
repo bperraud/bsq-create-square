@@ -52,4 +52,7 @@ int		ft_atoi(char *str);
 //file parsing function
 int 	parse(char *path, t_map *map);
 
+//create map file
+void create_file_map();
+
 #endif
