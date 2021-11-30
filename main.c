@@ -33,8 +33,6 @@ int main(int argc, char **argv) {
     if (argc == 1) {
         standard_input_map(1);
         path = ft_strdup("new_map.txt");
-        if (!parse(path, map))
-            return (0);
         bsq(map, path);
     }
     else
@@ -45,8 +43,6 @@ int main(int argc, char **argv) {
         while (i < argc)
         {
             path = ft_strdup(argv[i]);
-            if (!parse(path, map))
-                return (0);
             bsq(map, path);
             write(1, "\n", 1);
             argc--;
