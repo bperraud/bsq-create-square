@@ -15,15 +15,7 @@ void bsq(t_map *map, char *path)
     print_map(*map);
 
     printf("\n");
-//    printf("index in map 12, 2 %d\n", is_index_in_map(*map, 12, 4 - 1));
-//    printf("index in map 17, 2 %d\n", is_index_in_map(*map, 17, 3 - 1));
-//    printf("index in map 22, 2 %d\n", is_index_in_map(*map, 22, 3 - 1));
-//
-//    printf(" is_no_symbol_line : %d\n", is_no_symbol_line(*map, 12, 3));
-//    printf(" is_no_symbol_line : %d\n", is_no_symbol_line(*map, 17, 3));
-//    printf(" is_no_symbol_line : %d\n", is_no_symbol_line(*map, 22, 3));
-//    printf(" is_no_symbol_line : %d\n", is_no_symbol_line(*map, 0, 2));
-//    printf(" is_no_symbol_line : %d\n", is_no_symbol_line(*map, 4, 2 - 1));
+
     find_bsq(map);
     write_bsq(*map);
 
@@ -39,12 +31,11 @@ int main(int argc, char **argv) {
 
     map = malloc(sizeof(*map));
     if (argc == 1) {
-        //create_map_file();
         standard_input_map(1);
         path = ft_strdup("new_map.txt");
-        printf("new_map.txt\n");
+        if (!parse(path, map))
+            return (0);
         bsq(map, path);
-        printf("END");
     }
     else
     {
@@ -54,11 +45,16 @@ int main(int argc, char **argv) {
         while (i < argc)
         {
             path = ft_strdup(argv[i]);
+            if (!parse(path, map))
+                return (0);
             bsq(map, path);
             write(1, "\n", 1);
             argc--;
         }
     }
+
+    printf("END");
+
     return 0;
 }
 
