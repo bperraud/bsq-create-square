@@ -12,10 +12,10 @@ void bsq(t_map *map, char *path)
     map->bsq.start_point.y = -1;
     map->bsq.index = -1;
 
+    printf("(line, col) (%d, %d)\n", map->line, map->col);
+
     print_map(*map);
-
     printf("\n");
-
     find_bsq(map);
     write_bsq(*map);
 
@@ -48,9 +48,7 @@ int main(int argc, char **argv)
             argc--;
         }
     }
-
-    printf("END");
-
+    printf("END\n");
     return 0;
 }
 

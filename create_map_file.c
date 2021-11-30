@@ -50,10 +50,3 @@ void standard_input_map(int isfirst)
     else
         create_map_file(ft_atoi(buffer), line);
 }
-
-//void create_map_file(int nb_line, char *line)
-//{
-//    line[nb_line] = '\0';
-//    nb_line = ft_atoi(line);
-//    free(line);
-//    ft_putstr(line);
