@@ -33,7 +33,7 @@ int main() {
 
     if (!parse("map.txt", map))
     {
-        printf("la");
+        printf("soucis parsing");
         return (0);
     }
     else
@@ -41,11 +41,18 @@ int main() {
 
     printf("la");
 
-    print_map(*map);
-    find_bsq(map);
+    map->bsq.size = 0;
 
-    write_bsq(*map);
+    //map->bsq.start_point->x = -1;
+//    map->bsq.start_point->y = -1;
+    map->bsq.index = -1;
+
     print_map(*map);
+
+//    find_bsq(map);
+//
+//    write_bsq(*map);
+//    print_map(*map);
 
     free(map->points);
     free(map);

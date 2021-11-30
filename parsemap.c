@@ -63,7 +63,7 @@ int	str_to_map(char *str, t_map *map)
 	map->symbols[1] = split[0][size - 2];
 	map->symbols[2] = split[0][size - 1];
 	split[0][size - 3] = '\0';
-	map->col = atoi(split[0]);
+	map->col = ft_atoi(split[0]);
 	i = 0;
 	while (split[i])
 		i++;
