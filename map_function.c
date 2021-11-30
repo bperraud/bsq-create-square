@@ -20,27 +20,33 @@ void print_map(t_map map)
 }
 
 /*
- * return 1 if there are "lines" empty lines from start point
+ * write bsq in map
  */
-int is_empty_lines(t_map map, int index, int lines)
+void write_bsq(t_map map)
+{
+    int index;
+    int i;
+
+    index = map.bsq.index;
+    i = 0;
+    while (i <= map.bsq.size - 1)
+    {
+        write_line(map, index);
+        index += map.line;      // passe a la ligne suivante
+        i++;
+    }
+}
+
+void write_line(t_map map, int index)
 {
     int i;
 
     i = 0;
-    while (i <= lines)
+    while (i < map.bsq.size)
     {
-        if (!is_no_symbol_line(map, index, lines) || !is_index_in_map(map, index, lines) || map.points[index].symbol == 2 || index >= map.nb_points)
-        {
-            printf("pas possible\n");
-            return (0);
-        }
-        else
-        {
-            i++;
-            index += map.line;
-        }
+        map.points[index + i].symbol = 1;
+        i++;
     }
-    return (1);
 }
 
 /*
@@ -67,9 +73,6 @@ int is_no_symbol_line(t_map map, int index, int nb)
 int is_index_in_map(t_map map, int index, int size)
 {
     if (map.points[index].y + size > map.line - 1)
-    {
-        //printf("depasse la map\n");
         return (0);
-    }
     return (1);
 }

@@ -1,6 +1,6 @@
 #include "header.h"
 
-void find_biggest_square(t_map *map)
+void find_bsq(t_map *map)
 {
     int i;
     int square_size;
@@ -9,15 +9,14 @@ void find_biggest_square(t_map *map)
     square_size = 1;
     while (i < map->nb_points && square_size <= MIN(map->line, map->col))
     {
-//        printf("i : %d\n", i);
-//        printf("square_size : %d\n", square_size);
-        if (try_nsquare(*map, i, square_size)) // && square_size >= map->best_square.size)
+        if (try_nsquare(*map, i, square_size) && square_size > map->bsq.size)
         {
             printf("index : %d, meilleur solution : %d \n", i, square_size);
             printf("x : %d, y : %d \n", map->points[i].x, map->points[i].y);
-            map->best_square.size = square_size;
-            map->best_square.start_point->x = map->points[i].x;
-            map->best_square.start_point->y = map->points[i].y;
+            map->bsq.size = square_size;
+            map->bsq.start_point->x = map->points[i].x;
+            map->bsq.start_point->y = map->points[i].y;
+            map->bsq.index = i;
             square_size++;
             i = 0;
         }
@@ -46,20 +45,4 @@ int try_nsquare(t_map map, int index, int square_size)
         }
     }
     return (1);
-}
-
-/*
- * get point with coordinate (x, y)
- */
-t_point get_point(t_map map, int x, int y)
-{
-    int i;
-
-    i = 0;
-    while(i < map.nb_points)
-    {
-        if (map.points[i].x == x && map.points[i].y == y)
-            return map.points[i];
-    }
-    return map.points[0];
 }
