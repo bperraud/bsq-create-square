@@ -6,7 +6,7 @@
 /*   By: jboumal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 16:00:15 by jboumal           #+#    #+#             */
-/*   Updated: 2021/11/29 16:49:00 by jboumal          ###   ########.fr       */
+/*   Updated: 2021/12/01 13:27:44 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -65,9 +65,9 @@ int	str_to_map(char *str, t_map *map)
 	split[0][size - 3] = '\0';
 	map->col = ft_atoi(split[0]);
 	i = 0;
-	while (split[i])
+	while (split[1][i])
 		i++;
-	map->line = i - 1;
+	map->line = i;
 	map->nb_points = map->line * map-> col;
 	if (!put_points(map, split))
 		return (0);
