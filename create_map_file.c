@@ -51,9 +51,9 @@ void	standard_input_map(int isfirst)
 		exit(EXIT_SUCCESS);
 	if (!check_first_line(buffer))
 	{
-		ft_putstr("Wrong input\n");
-		standard_input_map(0);
+		ft_putstr("map error\n");
+		exit(EXIT_SUCCESS);
 	}
 	else
-		create_map_file(ft_atoi(buffer), line);
+		create_map_file(get_line_number(buffer), line);
 }
