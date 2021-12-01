@@ -108,15 +108,15 @@ int	parse(char *path, t_map *map)
 	{
 		fd = open(path, O_RDONLY);
 		if (fd < 0)
-		{
 			return (put_error(1));
-		}
 		while (read(fd, tmp, 1))
 			str = ft_add(str, tmp);
 		close(fd);
 	}
 	else
 		str = standard_input_map();
+	if (!str)
+		return (0);
 	if (!str_to_map(str, map))
 		return (0);
 	free(str);
