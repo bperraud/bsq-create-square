@@ -6,7 +6,7 @@
 /*   By: jboumal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 16:00:15 by jboumal           #+#    #+#             */
-/*   Updated: 2021/12/01 13:27:44 by jboumal          ###   ########.fr       */
+/*   Updated: 2021/12/01 16:05:29 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -40,8 +40,8 @@ int	put_points(t_map *map, char **split)
 		j = -1;
 		while (split[i][++j])
 		{
-			point.x = j;
-			point.y = i - 1;
+			point.x = i - 1;
+			point.y = j;
 			point.symbol = symbol_to_n(split[i][j], map);
 			map->points[(i - 1) * map->col + j] = point;
 		}
@@ -63,11 +63,11 @@ int	str_to_map(char *str, t_map *map)
 	map->symbols[1] = split[0][size - 2];
 	map->symbols[2] = split[0][size - 1];
 	split[0][size - 3] = '\0';
-	map->col = ft_atoi(split[0]);
+	map->line = ft_atoi(split[0]);
 	i = 0;
 	while (split[1][i])
 		i++;
-	map->line = i;
+	map->col = i;
 	map->nb_points = map->line * map-> col;
 	if (!put_points(map, split))
 		return (0);
