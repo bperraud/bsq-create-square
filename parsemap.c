@@ -6,7 +6,7 @@
 /*   By: jboumal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 16:00:15 by jboumal           #+#    #+#             */
-/*   Updated: 2021/12/01 15:35:19 by jboumal          ###   ########.fr       */
+/*   Updated: 2021/12/01 16:37:21 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -35,15 +35,16 @@ int	put_points(t_map *map, char **split)
 	if (!map->points)
 		return (0);
 	i = 0;
-	while (split[++i])
+	while (++i <= map->line)
 	{
 		j = -1;
-		while (split[i][++j])
+		while (++j < map->col)
 		{
-			point.x = j;
-			point.y = i - 1;
+			printf("j%d\n", j);
+			point.x = i - 1;
+			point.y = j;
 			point.symbol = symbol_to_n(split[i][j], map);
-			map->points[(i - 1) * map->line + j] = point;
+			map->points[(i - 1) * map->col + j] = point;
 		}
 	}
 	return (1);
