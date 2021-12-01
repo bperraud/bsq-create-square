@@ -1,7 +1,7 @@
 SRCS =	main.c \
 		check_map.c \
 		ft_atoi.c \
-		map_function.c \
+		ft_map.c \
 		parsemap.c \
 		create_map_file.c \
 		ft_split.c \
