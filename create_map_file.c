@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_map_file.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bperraud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/01 11:14:24 by bperraud          #+#    #+#             */
+/*   Updated: 2021/12/01 11:14:26 by bperraud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
 void	create_map_file(int nb_line, char *line)
@@ -26,7 +38,7 @@ void	create_map_file(int nb_line, char *line)
 }
 
 void	standard_input_map(int isfirst)
-{	
+{
 	char	buffer[50];
 	char	*line;
 
