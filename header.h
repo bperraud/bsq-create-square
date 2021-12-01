@@ -6,7 +6,7 @@
 /*   By: jboumal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 09:07:38 by jboumal           #+#    #+#             */
-/*   Updated: 2021/12/01 09:07:41 by jboumal          ###   ########.fr       */
+/*   Updated: 2021/12/01 09:28:28 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ int		check_map_core(char **split, int n, char *charset);
 int		put_error(void);
 
 //main
-void	bsq(t_map *map, char *path);
+int		bsq(char *path);
 
 #endif

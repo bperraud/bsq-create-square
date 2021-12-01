@@ -1,7 +1,12 @@
 #include "header.h"
 
-void bsq(t_map *map, char *path)
+int bsq(char *path)
 {
+	t_map	*map;
+
+    map = malloc(sizeof(*map));
+	if (!map)
+		return (0);
     if (!parse(path, map))
     {
         printf("soucis parsing");
@@ -22,18 +27,21 @@ void bsq(t_map *map, char *path)
     print_map(*map);
     free(map->points);
     free(map);
+	return (1);
 }
 
 int main(int argc, char **argv)
 {
     char *path;
-    t_map *map;
 
-    map = malloc(sizeof(*map));
     if (argc == 1) {
         standard_input_map(1);
         path = ft_strdup("new_map.txt");
-        bsq(map, path);
+		if (!path)
+			return (0);
+        if (!bsq(path))
+			return (0);
+		free(path);
     }
     else
     {
@@ -43,15 +51,16 @@ int main(int argc, char **argv)
         while (i < argc)
         {
             path = ft_strdup(argv[i]);
-            bsq(map, path);
+			if (!path)
+				return (0);
+            if (!bsq(path))
+				return (0);
             write(1, "\n", 1);
-            argc--;
+			i++;
+			printf("%s\n", path);
+			free(path);
         }
     }
     printf("END\n");
     return 0;
 }
-
-
-
-
