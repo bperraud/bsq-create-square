@@ -72,7 +72,7 @@ int		parse(char *path, t_map *map);
 int		check_map(char **split);
 
 //create map file
-void	standard_input_map(int isfirst);
+void	standard_input_map();
 void	create_map_file(int nb_line, char *line);
 
 //check map
@@ -82,6 +82,6 @@ int		put_error(void);
 int		get_line_number(char *line);
 
 //main
-int		bsq(char *path);
+int		bsq();
 
 #endif

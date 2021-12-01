@@ -40,7 +40,6 @@ int	put_points(t_map *map, char **split)
 		j = -1;
 		while (++j < map->col)
 		{
-			printf("j%d\n", j);
 			point.x = i - 1;
 			point.y = j;
 			point.symbol = symbol_to_n(split[i][j], map);

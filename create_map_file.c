@@ -35,13 +35,12 @@ void	create_map_file(int nb_line, char *line)
 	close(fd);
 }
 
-void	standard_input_map(int isfirst)
+void	standard_input_map()
 {
 	char	buffer[50];
 	char	*line;
 
-	if (isfirst)
-		ft_putstr("Write map or quit() to exit\n");
+	ft_putstr("Write map or quit() to exit\n");
 	read(STDIN_FILENO, buffer, 50);
 	buffer[ft_strlen_input(buffer) - 1] = '\0';
 	if (!ft_strncmp(buffer, "quit()\n", 6))

@@ -53,7 +53,7 @@ int	try_nsquare(t_map map, int index, int square_size)
 		else
 		{
 			i++;
-			index += map.line;
+			index += map.col;
 		}
 	}
 	return (1);
