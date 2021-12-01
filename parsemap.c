@@ -6,7 +6,7 @@
 /*   By: jboumal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 16:00:15 by jboumal           #+#    #+#             */
-/*   Updated: 2021/12/01 16:37:21 by jboumal          ###   ########.fr       */
+/*   Updated: 2021/12/01 19:11:21 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -104,16 +104,22 @@ int	parse(char *path, t_map *map)
 	if (!str)
 		return (0);
 	*str = '\0';
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	while (read(fd, tmp, 1))
+	if (path)
 	{
-		str = ft_add(str, tmp);
-		if (!str)
+		fd = open(path, O_RDONLY);
+		if (fd < 0)
 			return (0);
+		while (read(fd, tmp, 1))
+		{
+			str = ft_add(str, tmp);
+			if (!str)
+				return (0);
+		}
+		close(fd);
 	}
-	close(fd);
+	else
+		str = standard_input_map();
+	printf("%s",str);
 	if (!str_to_map(str, map))
 		return (0);
 	free(str);

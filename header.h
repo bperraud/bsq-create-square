@@ -6,7 +6,7 @@
 /*   By: jboumal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 09:07:38 by jboumal           #+#    #+#             */
-/*   Updated: 2021/12/01 11:57:12 by jboumal          ###   ########.fr       */
+/*   Updated: 2021/12/01 18:16:00 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ int		parse(char *path, t_map *map);
 int		check_map(char **split);
 
 //create map file
-void	standard_input_map();
-void	create_map_file(int nb_line, char *line);
+char	*standard_input_map();
+char	*create_map_file(int nb_line, char *line);
 
 //check map
 int		check_first_line(char *line);

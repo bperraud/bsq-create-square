@@ -6,37 +6,58 @@
 /*   By: bperraud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:14:24 by bperraud          #+#    #+#             */
-/*   Updated: 2021/12/01 11:45:02 by jboumal          ###   ########.fr       */
+/*   Updated: 2021/12/01 19:12:12 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	create_map_file(int nb_line, char *line)
+char	*ft_conc(char *str, char *tmp)
 {
-	char	buf[BUF];
-	int		fd;
-	int		i;
+	char	*str2;
+	int		size;
 
-	i = 0;
-    fd = open("tmp.txt", O_RDWR | O_CREAT, 0777);
-	write(fd, line, ft_strlen(line));
-	write(fd, "\n", 1);
-	while (i < nb_line)
-	{
-		read(STDIN_FILENO, buf, sizeof(buf));
-		//str_len = ft_strlen_input(buf);
-		if (!ft_strncmp(buf, "quit()\n", 6))
-			exit(EXIT_SUCCESS);
-		i++;
-	}
-	close(fd);
+	size = ft_strlen(str);
+	str2 = malloc((size + ft_strlen(tmp) + 1) * sizeof(char));
+	if (!str2)
+		return (0);
+	ft_strcpy(str2, str);
+	ft_strcpy(str2 + size, tmp);
+	size += ft_strlen(tmp);
+	str2[size + 1] = '\0';
+	free(str);
+	return (str2);
 }
 
-void	standard_input_map()
+char	*create_map_file(int nb_line, char *line)
+{
+	char	buf[1000];
+	char	*str;
+	int		i;
+	int		n;
+	
+	i = 0;
+	str = ft_strdup(line);
+	str = ft_conc(str, "\n");
+	while (i < nb_line)
+	{
+		buf[0] = '\0';
+		n = read(STDIN_FILENO, buf, sizeof(buf));
+		if (!ft_strncmp(buf, "quit()\n", 6))
+			exit(EXIT_SUCCESS);
+		buf[n] = '\0';
+		str = ft_conc(str, buf);
+		i++;
+	}
+	ft_putstr(str);
+	return (str);
+}
+
+char	*standard_input_map()
 {
 	char	buffer[50];
 	char	*line;
+	char	*str;
 
 	ft_putstr("Write map or quit() to exit\n");
 	read(STDIN_FILENO, buffer, 50);
@@ -52,5 +73,6 @@ void	standard_input_map()
 		exit(EXIT_SUCCESS);
 	}
 	else
-		create_map_file(get_line_number(buffer), line);
+		str = create_map_file(get_line_number(buffer), line);
+	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: jboumal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:23:14 by jboumal           #+#    #+#             */
-/*   Updated: 2021/12/01 11:42:32 by jboumal          ###   ########.fr       */
+/*   Updated: 2021/12/01 18:29:00 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,7 @@ int	main(int argc, char **argv)
     int		i;
 
     if (argc == 1)
-    {
-        standard_input_map(1);
-        path = ft_strdup("tmp.txt");
-        if (!path)
-            return (wrong_path(path));
-        if (!bsq(path))
-            return (wrong_path(path));
-    }
+		bsq(0);
     i = 1;
     while (i < argc)
     {
@@ -62,7 +55,6 @@ int	main(int argc, char **argv)
             return (wrong_path(path));
         if (!bsq(path))
             return (wrong_path(path));
-        write(1, "\n", 1);
         i++;
         free(path);
     }
