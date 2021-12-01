@@ -6,7 +6,7 @@
 /*   By: bperraud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:14:24 by bperraud          #+#    #+#             */
-/*   Updated: 2021/12/01 11:14:26 by bperraud         ###   ########.fr       */
+/*   Updated: 2021/12/01 11:45:02 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void	create_map_file(int nb_line, char *line)
 		str_len = ft_strlen_input(buf);
 		if (!ft_strncmp(buf, "quit()\n", 6))
 			exit(EXIT_SUCCESS);
-		if (!ft_strncmp(buf, "end\n", 3))
-			break ;
 		write (fd, &buf, str_len);
 		i++;
 	}
