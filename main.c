@@ -20,7 +20,7 @@ int	bsq(char *path)
 	if (!map)
 		return (0);
 	if (!parse(path, map))
-		exit(EXIT_FAILURE);
+		return (0);
 	map->bsq.size = 0;
 	map->bsq.start_point.x = -1;
 	map->bsq.start_point.y = -1;
@@ -52,8 +52,7 @@ int	main(int argc, char **argv)
 		path = ft_strdup(argv[i]);
 		if (!path)
 			return (wrong_path(path));
-		if (!bsq(path))
-			return (wrong_path(path));
+		bsq(path);
 		i++;
 		free(path);
 		if (argc != i)

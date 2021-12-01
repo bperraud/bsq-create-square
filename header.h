@@ -81,6 +81,6 @@ int		put_error(void);
 int		get_line_number(char *line);
 
 //main
-int		bsq(void);
+int		bsq(char *path);
 
 #endif

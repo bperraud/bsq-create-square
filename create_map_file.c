@@ -49,7 +49,6 @@ char	*create_map_file(int nb_line, char *line)
 		str = ft_conc(str, buf);
 		i++;
 	}
-	ft_putstr(str);
 	return (str);
 }
 
@@ -66,11 +65,11 @@ char	*standard_input_map(void)
 		exit(EXIT_SUCCESS);
 	line = ft_strdup(buffer);
 	if (!line)
-		exit(EXIT_SUCCESS);
+		exit(EXIT_FAILURE);
 	if (!check_first_line(buffer))
 	{
 		ft_putstr("map error\n");
-		exit(EXIT_SUCCESS);
+		return (0);
 	}
 	else
 		str = create_map_file(get_line_number(buffer), line);
