@@ -6,7 +6,8 @@ SRCS =	main.c \
 		create_map_file.c \
 		ft_split.c \
 		find_bsq.c \
-		ft_strings.c
+		ft_strings.c \
+		ft_strings2.c
 
 OBJS = ${SRCS:.c=.o}
 

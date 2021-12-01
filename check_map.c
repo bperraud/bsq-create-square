@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jboumal <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/01 08:57:54 by jboumal           #+#    #+#             */
+/*   Updated: 2021/12/01 08:58:20 by jboumal          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
 int	put_error(void)
@@ -11,9 +23,9 @@ int	check_map_core(char **split, int n, char *charset)
 	int	i;
 	int	j;
 	int	len;
-	
+
 	if (n != (list_len(split) - 1))
-		return (0);	
+		return (0);
 	i = 0;
 	len = ft_strlen(split[1]);
 	while (++i <= n)

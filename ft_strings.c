@@ -1,26 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strings.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jboumal <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/01 08:58:38 by jboumal           #+#    #+#             */
+/*   Updated: 2021/12/01 09:00:08 by jboumal          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
-
-int	list_len(char **list)
-{
-	int	i;
-
-	i = 0;
-	while (list[i])
-		i++;
-	return (i);
-}
-
-int ft_strlen_input(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i] != '\n')
-	{
-		i++;
-	}
-	return (i+1);
-}
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
