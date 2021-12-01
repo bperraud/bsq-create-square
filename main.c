@@ -6,7 +6,7 @@
 /*   By: jboumal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:23:14 by jboumal           #+#    #+#             */
-/*   Updated: 2021/12/01 11:29:29 by jboumal          ###   ########.fr       */
+/*   Updated: 2021/12/01 11:42:32 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 	{
 		standard_input_map(1);
-		path = ft_strdup("new_map.txt");
+		path = ft_strdup("tmp.txt");
 		if (!path)
 			return (wrong_path(path));
 		if (!bsq(path))
