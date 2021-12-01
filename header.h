@@ -6,7 +6,7 @@
 /*   By: jboumal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 09:07:38 by jboumal           #+#    #+#             */
-/*   Updated: 2021/12/01 09:28:28 by jboumal          ###   ########.fr       */
+/*   Updated: 2021/12/01 11:57:12 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	create_map_file(int nb_line, char *line);
 int		check_first_line(char *line);
 int		check_map_core(char **split, int n, char *charset);
 int		put_error(void);
+int		get_line_number(char *line);
 
 //main
 int		bsq(char *path);

@@ -6,11 +6,28 @@
 /*   By: jboumal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 08:57:54 by jboumal           #+#    #+#             */
-/*   Updated: 2021/12/01 10:51:21 by jboumal          ###   ########.fr       */
+/*   Updated: 2021/12/01 11:55:48 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+int	get_line_number(char *line)
+{
+	char	*nbr;
+	int		n;
+
+	n = ft_strlen(line) - 3;
+	if (n < 0)
+		return (0);
+	nbr = ft_strdup(line);
+	if (!nbr)
+		return (0);
+	nbr[n] = '\0';
+	n = ft_atoi(nbr);
+	free(nbr);
+	return (n);
+}
 
 int	put_error(void)
 {
