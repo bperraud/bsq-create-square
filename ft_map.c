@@ -6,7 +6,7 @@
 /*   By: bperraud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:13:52 by bperraud          #+#    #+#             */
-/*   Updated: 2021/12/01 15:29:02 by jboumal          ###   ########.fr       */
+/*   Updated: 2021/12/01 16:44:29 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_map(t_map map)
 		j = 0;
 		while (j < map.col)
 		{
-			write(1, &map.symbols[map.points[i * map.line + j].symbol], 1);
+			write(1, &map.symbols[map.points[i * map.col + j].symbol], 1);
 			j++;
 		}
 		write(1, "\n", 1);
