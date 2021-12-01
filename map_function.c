@@ -32,7 +32,7 @@ void write_bsq(t_map map)
     while (i <= map.bsq.size - 1)
     {
         write_line(map, index);
-        index += map.line;      // passe a la ligne suivante
+        index += map.line;
         i++;
     }
 }

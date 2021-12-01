@@ -11,8 +11,6 @@ void find_bsq(t_map *map)
     {
         if (try_nsquare(*map, i, square_size) && square_size > map->bsq.size)
         {
-//            printf("index : %d, meilleur solution : %d \n", i, square_size);
-//            printf("x : %d, y : %d \n", map->points[i].x, map->points[i].y);
             map->bsq.size = square_size;
             map->bsq.start_point.x = map->points[i].x;
             map->bsq.start_point.y = map->points[i].y;
@@ -37,8 +35,6 @@ int try_nsquare(t_map map, int index, int square_size)
     while (i < square_size)
     {
         if (!is_no_symbol_line(map, index, square_size) || !is_index_in_map(map, index, square_size - 1)|| index >= map.nb_points)
-        //if (!is_no_symbol_line(map, index, square_size - 1) || !is_index_in_map(map, index, square_size - 1) || map.points[index].symbol == 2 || index >= map.nb_points)
-        //if (!is_no_symbol_line(map, index, square_size - 1) || !is_index_in_map(map, index, square_size - 1) || index >= map.nb_points)
             return (0);
         else
         {

@@ -9,7 +9,7 @@ void create_map_file(int nb_line, char *line)
     int i;
 
     i = 0;
-    fd = open(tmpname, O_WRONLY | O_CREAT, 0644);   //0644 (owning) User: read & write * Group: read * Other: read
+    fd = open(tmpname, O_WRONLY | O_CREAT, 0644);
     write(fd, line, ft_strlen(line));
     write(fd, "\n", 1);
     while(i < nb_line)
@@ -39,9 +39,8 @@ void standard_input_map(int isfirst)
     if(!ft_strncmp(buffer, "quit()\n", 6))
         exit(EXIT_SUCCESS);
     line = ft_strdup(buffer);
-    if (!line){
+    if (!line)
         exit(EXIT_SUCCESS);
-    }
     if (!check_first_line(buffer))
     {
         ft_putstr("Wrong input\n");

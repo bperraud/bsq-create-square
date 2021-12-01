@@ -8,22 +8,15 @@ int bsq(char *path)
 	if (!map)
 		return (0);
     if (!parse(path, map))
-    {
-        printf("soucis parsing");
-        exit(EXIT_SUCCESS);
-    }
+        exit(EXIT_FAILURE);
     map->bsq.size = 0;
     map->bsq.start_point.x = -1;
     map->bsq.start_point.y = -1;
     map->bsq.index = -1;
-
-    printf("(line, col) (%d, %d)\n", map->line, map->col);
-
     print_map(*map);
     printf("\n");
     find_bsq(map);
     write_bsq(*map);
-
     print_map(*map);
     free(map->points);
     free(map);
@@ -57,10 +50,8 @@ int main(int argc, char **argv)
 				return (0);
             write(1, "\n", 1);
 			i++;
-			printf("%s\n", path);
 			free(path);
         }
     }
-    printf("END\n");
     return 0;
 }
