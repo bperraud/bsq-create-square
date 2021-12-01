@@ -33,7 +33,7 @@ int	put_points(t_map *map, char **split)
 
 	map->points = malloc(sizeof(point) * map->nb_points);
 	if (!map->points)
-		return (0);
+		exit(EXIT_FAILURE);
 	i = 0;
 	while (++i <= map->line)
 	{
@@ -74,7 +74,7 @@ int	str_to_map(char *str, t_map *map)
 	i = -1;
 	while (split[++i])
 		free(split[i]);
-	free (split);
+	free(split);
 	return (1);
 }
 
@@ -102,13 +102,15 @@ int	parse(char *path, t_map *map)
 
 	str = malloc(sizeof(char));
 	if (!str)
-		return (0);
+		exit(EXIT_FAILURE);
 	*str = '\0';
 	if (path)
 	{
 		fd = open(path, O_RDONLY);
 		if (fd < 0)
-			return (0);
+		{
+			return (put_error(1));
+		}
 		while (read(fd, tmp, 1))
 			str = ft_add(str, tmp);
 		close(fd);

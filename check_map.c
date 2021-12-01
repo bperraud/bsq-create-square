@@ -29,9 +29,12 @@ int	get_line_number(char *line)
 	return (n);
 }
 
-int	put_error(void)
+int	put_error(int i)
 {
-	write(2, "map error\n", 10);
+	if (i == 0)
+		write(2, "map error\n", 10);
+	else
+		write(2, "file does not exist\n", 20);
 	return (0);
 }
 
@@ -90,15 +93,15 @@ int	check_map(char **split)
 	char	*nbr;
 
 	if (!split)
-		return (0);
+		exit(EXIT_FAILURE);
 	if (list_len(split) < 2)
-		return (put_error());
+		return (put_error(0));
 	n = check_first_line(split[0]);
 	if (!n)
-		return (put_error());
+		return (put_error(0));
 	nbr = ft_strdup(split[0]);
 	if (!nbr)
-		return (0);
+		exit(EXIT_FAILURE);
 	nbr[n] = '\0';
 	n = ft_atoi(nbr);
 	charset[0] = split[0][ft_strlen(nbr)];
@@ -106,6 +109,6 @@ int	check_map(char **split)
 	charset[2] = split[0][ft_strlen(nbr) + 2];
 	free(nbr);
 	if (!check_map_core(split, n, charset))
-		return (put_error());
+		return (put_error(0));
 	return (1);
 }

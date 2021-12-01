@@ -18,7 +18,7 @@ int	bsq(char *path)
 
 	map = malloc(sizeof(*map));
 	if (!map)
-		return (0);
+		exit(EXIT_FAILURE);
 	if (!parse(path, map))
 		return (0);
 	map->bsq.size = 0;

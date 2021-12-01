@@ -77,7 +77,7 @@ char	*create_map_file(int nb_line, char *line);
 //check map
 int		check_first_line(char *line);
 int		check_map_core(char **split, int n, char *charset);
-int		put_error(void);
+int		put_error(int i);
 int		get_line_number(char *line);
 
 //main
