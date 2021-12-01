@@ -31,7 +31,7 @@ int	get_line_number(char *line)
 
 int	put_error(void)
 {
-	ft_putstr("map error\n");
+	write(2, "map error\n", 10);
 	return (0);
 }
 

@@ -16,20 +16,18 @@ void	create_map_file(int nb_line, char *line)
 {
 	char	buf[BUF];
 	int		fd;
-	int		str_len;
 	int		i;
 
 	i = 0;
-	fd = open("tmp.txt", O_WRONLY | O_CREAT, 0644);
+    fd = open("tmp.txt", O_RDWR | O_CREAT, 0777);
 	write(fd, line, ft_strlen(line));
 	write(fd, "\n", 1);
 	while (i < nb_line)
 	{
 		read(STDIN_FILENO, buf, sizeof(buf));
-		str_len = ft_strlen_input(buf);
+		//str_len = ft_strlen_input(buf);
 		if (!ft_strncmp(buf, "quit()\n", 6))
 			exit(EXIT_SUCCESS);
-		write (fd, &buf, str_len);
 		i++;
 	}
 	close(fd);
