@@ -56,7 +56,6 @@ void	write_line(t_map map, int index)
 	i = 0;
 	while (i < map.bsq.size)
 	{
-		//map.points[index + i].symbol = 2;
         map.points[index + i].symbol = 2;
 		i++;
 	}
@@ -86,7 +85,6 @@ int	is_no_symbol_line(t_map map, int index, int nb)
  */
 int	is_index_in_map(t_map map, int index, int size)
 {
-    //printf("col : %d", map.points[index].y);
 	if (map.points[index].y + size >= map.col)
 		return (0);
 	return (1);

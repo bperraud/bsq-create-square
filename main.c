@@ -25,7 +25,6 @@ int	bsq(char *path)
     map->bsq.start_point.x = -1;
     map->bsq.start_point.y = -1;
     map->bsq.index = -1;
-    printf("\n");
     find_bsq(map);
     write_bsq(*map);
     print_map(*map);
@@ -57,6 +56,8 @@ int	main(int argc, char **argv)
             return (wrong_path(path));
         i++;
         free(path);
+        if (argc != i)
+        	write(1, "\n", 1);
     }
     return (0);
 }

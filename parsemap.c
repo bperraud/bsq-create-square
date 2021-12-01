@@ -119,7 +119,6 @@ int	parse(char *path, t_map *map)
 	}
 	else
 		str = standard_input_map();
-	printf("%s",str);
 	if (!str_to_map(str, map))
 		return (0);
 	free(str);
