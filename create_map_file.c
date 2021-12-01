@@ -6,7 +6,7 @@
 /*   By: bperraud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:14:24 by bperraud          #+#    #+#             */
-/*   Updated: 2021/12/01 19:12:12 by jboumal          ###   ########.fr       */
+/*   Updated: 2021/12/01 20:29:36 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*create_map_file(int nb_line, char *line)
 	char	*str;
 	int		i;
 	int		n;
-	
+
 	i = 0;
 	str = ft_strdup(line);
 	str = ft_conc(str, "\n");
@@ -53,7 +53,7 @@ char	*create_map_file(int nb_line, char *line)
 	return (str);
 }
 
-char	*standard_input_map()
+char	*standard_input_map(void)
 {
 	char	buffer[50];
 	char	*line;

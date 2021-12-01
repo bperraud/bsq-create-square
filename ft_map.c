@@ -6,7 +6,7 @@
 /*   By: bperraud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 11:13:52 by bperraud          #+#    #+#             */
-/*   Updated: 2021/12/01 16:44:29 by jboumal          ###   ########.fr       */
+/*   Updated: 2021/12/01 20:30:06 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	write_line(t_map map, int index)
 	i = 0;
 	while (i < map.bsq.size)
 	{
-        map.points[index + i].symbol = 2;
+		map.points[index + i].symbol = 2;
 		i++;
 	}
 }

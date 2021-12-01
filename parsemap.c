@@ -6,7 +6,7 @@
 /*   By: jboumal <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 16:00:15 by jboumal           #+#    #+#             */
-/*   Updated: 2021/12/01 19:11:21 by jboumal          ###   ########.fr       */
+/*   Updated: 2021/12/01 20:35:41 by jboumal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -86,7 +86,7 @@ char	*ft_add(char *str, char *tmp)
 	size = ft_strlen(str);
 	str2 = malloc((size + 2) * sizeof(char));
 	if (!str2)
-		return (0);
+		exit (EXIT_FAILURE);
 	ft_strcpy(str2, str);
 	str2[size] = tmp[0];
 	str2[size + 1] = '\0';
@@ -110,11 +110,7 @@ int	parse(char *path, t_map *map)
 		if (fd < 0)
 			return (0);
 		while (read(fd, tmp, 1))
-		{
 			str = ft_add(str, tmp);
-			if (!str)
-				return (0);
-		}
 		close(fd);
 	}
 	else
